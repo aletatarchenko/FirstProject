@@ -37,16 +37,15 @@ final class TracksTableViewController: UIViewController {
   private func setupBinding() {
     playerView.rewindPlayerButton.rx.tap
       .subscribe(onNext: { [weak self] _ in
-        self?.viewModel.player?.rewindAudio(by: 15)
+        self?.viewModel.rewindAudio()
       })
       .disposed(by: rx.disposeBag)
 
     playerView.forwardPlayerButton.rx.tap
       .subscribe(onNext: { [weak self] _ in
-        self?.viewModel.player?.forwardAudio(by: 15)
+        self?.viewModel.forwardAudio()
       })
       .disposed(by: rx.disposeBag)
-
 
     viewModel.driveIsShowPlayer
       .subscribe(onNext: { [weak self] _ in
@@ -82,8 +81,6 @@ final class TracksTableViewController: UIViewController {
       })
       .disposed(by: rx.disposeBag)
 
-    tableView.register(cellType: TrackTableViewCell.self)
-
     viewModel.driverTracks
       .drive(tableView.rx.items(cellIdentifier: TrackTableViewCell.id,
                                 cellType: TrackTableViewCell.self)) { [weak self] (_, model: TrackItem, cell: TrackTableViewCell) in
@@ -100,6 +97,7 @@ final class TracksTableViewController: UIViewController {
   }
 
   private func setupUI() {
+    tableView.register(cellType: TrackTableViewCell.self)
     tableView.tableFooterView = UIView()
   }
 

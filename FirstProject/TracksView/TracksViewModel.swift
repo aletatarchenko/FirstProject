@@ -13,23 +13,26 @@ import RxOptional
 
 protocol PlayerViewModel {
   var player: Player? { get set }
-  var driveCurrentTime: Driver<Int?> { get }
-  var driveCurrentValueLine: Driver<Float> { get }
-  var driveIsShowPlayer: Observable<Bool> { get }
-  var currentTrackRelay: BehaviorRelay<TrackItem?> { get set }
   func setupPlayerWith(_ trackItem: TrackItem)
   func pausePlayer()
   func playPlayer()
+  func rewindAudio()
+  func forwardAudio()
 }
 
 protocol TracksViewModel: PlayerViewModel {
-
+  var currentTrackRelay: BehaviorRelay<TrackItem?> { get set }
   var driverTracks: Driver<[TrackItem]> { get }
+  var driveIsShowPlayer: Observable<Bool> { get }
+  var driveCurrentValueLine: Driver<Float> { get }
+  var driveCurrentTime: Driver<Int?> { get }
 }
 
 final class TracksViewModelImp: TracksViewModel {
 
   var player: Player?
+  
+  private let fifteenSeconds = 15.0
 
   private var disposeBag = DisposeBag()
 
@@ -88,6 +91,14 @@ final class TracksViewModelImp: TracksViewModel {
   func playPlayer() {
     player?.play()
     setupCurrentTrackWith(.playing)
+  }
+
+  func rewindAudio() {
+    player?.rewindAudio(by: fifteenSeconds)
+  }
+
+  func forwardAudio() {
+    player?.forwardAudio(by: fifteenSeconds)
   }
 
   private func nextTack() {

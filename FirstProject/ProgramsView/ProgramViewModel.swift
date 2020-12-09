@@ -48,7 +48,7 @@ final class ProgramViewModelImp: ProgramViewModel {
   }
 
   private func fetchPrograms() -> Single<[ProgramSection]>{
-    service.feetchPrograms()
+    service.fetchPrograms()
       .map { [ProgramSection(items: $0.programs.map { ProgramItem(program: $0 ) })]}
   }
 

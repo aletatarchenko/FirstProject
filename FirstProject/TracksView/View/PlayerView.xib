@@ -97,6 +97,7 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Qpk-KZ-4vO" secondAttribute="bottom" constant="8" id="2Gn-zV-qGM"/>
                 <constraint firstItem="Qpk-KZ-4vO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="FsQ-mm-4rs"/>
+                <constraint firstItem="HXR-bQ-0m3" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="HOv-fL-gBt"/>
                 <constraint firstAttribute="trailing" secondItem="Qpk-KZ-4vO" secondAttribute="trailing" constant="8" id="ewk-91-84x"/>
                 <constraint firstItem="Qpk-KZ-4vO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="nKG-kX-Ucs"/>
             </constraints>

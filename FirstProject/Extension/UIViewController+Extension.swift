@@ -12,8 +12,6 @@ protocol RxAlertControllerItem {
   var alertButton: UIAlertController.AlertButton { get }
 }
 
-
-
 extension UIViewController {
   func showErrorAlert(message: String) -> Single<AlertControllerItem> {
     showAlertController(title: "", message: message, items: [.ok])
@@ -35,7 +33,6 @@ extension UIViewController {
       .asObservable()
       .asSingle()
   }
-
 }
 
 enum AlertControllerItem: RxAlertControllerItem {

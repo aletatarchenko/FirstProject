@@ -15,6 +15,11 @@ def rx_pods
   pod 'Moya/RxSwift'
 end
 
+def ui_pods
+  pod 'AlamofireImage'
+end
+
 target 'FirstProject' do
  rx_pods
+ ui_pods
 end
